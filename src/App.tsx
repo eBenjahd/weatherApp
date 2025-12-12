@@ -1,7 +1,8 @@
 import CoordsProvider from "./context/CoordsContext"
 import WeatherProvider from "./context/WeatherContext"
+import MetricProvider from "./context/MetricsContext"
 import CitySearch from "./components/CitySearch"
-
+import Nav from "./components/Nav"
 
 function App() {
 
@@ -9,10 +10,10 @@ function App() {
     <>
       <CoordsProvider>
         <WeatherProvider>
-
-          <h1>Hola mundo!</h1>
-          <CitySearch />
-          
+          <MetricProvider>
+            <Nav />
+            <CitySearch />
+          </MetricProvider>
         </WeatherProvider>
       </CoordsProvider>
     </>

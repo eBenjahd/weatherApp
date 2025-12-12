@@ -1,28 +1,40 @@
-import { useState, useEffect, type KeyboardEvent } from "react";
+import { useState, useEffect, type KeyboardEvent, useRef } from "react";
+import type { InputSearchProps } from "../types/inputSearch.interface"
 
-interface City {
-  id: string | number;
-  name: string;
-  country: string;
-  latitude: number;
-  longitude: number;
-}
-
-interface InputSearchProps {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSelect: (city: City) => void;
-  options: City[];
-  placeholder?: string;
-}
-
-const InputSearch: React.FC<InputSearchProps> = ({ value, onChange, onSelect, options, placeholder }) => {
+const InputSearch: React.FC<InputSearchProps> = ({
+  value,
+  onChange,
+  onSelect,
+  options,
+  placeholder,
+  isLoading,
+  isSuccess,
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const listRef = useRef<HTMLUListElement>(null);
+  const shouldShowList = value.length > 2;
 
   useEffect(() => {
-    // Reset activeIndex si cambian las opciones
     setActiveIndex(0);
   }, [options]);
+
+  useEffect(() => {
+    if (!listRef.current) return;
+
+    const listEl = listRef.current;
+    const activeItem = listEl.children[activeIndex] as HTMLElement;
+
+    if (activeItem) {
+      const itemTop = activeItem.offsetTop;
+      const itemBottom = itemTop + activeItem.offsetHeight;
+
+      if (itemTop < listEl.scrollTop) {
+        listEl.scrollTop = itemTop;
+      } else if (itemBottom > listEl.scrollTop + listEl.clientHeight) {
+        listEl.scrollTop = itemBottom - listEl.clientHeight;
+      }
+    }
+  }, [activeIndex]);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (!options || options.length === 0) return;
@@ -40,8 +52,7 @@ const InputSearch: React.FC<InputSearchProps> = ({ value, onChange, onSelect, op
     }
 
     if (e.key === "Enter") {
-      const selectedCity = options[activeIndex];
-      onSelect(selectedCity);
+      onSelect(options[activeIndex]);
       e.preventDefault();
     }
   };
@@ -55,8 +66,10 @@ const InputSearch: React.FC<InputSearchProps> = ({ value, onChange, onSelect, op
         onKeyDown={handleKeyDown}
         style={{ width: "100%" }}
       />
-      {options.length > 0 && (
+
+      {shouldShowList && (
         <ul
+          ref={listRef}
           style={{
             position: "absolute",
             width: "100%",
@@ -70,6 +83,14 @@ const InputSearch: React.FC<InputSearchProps> = ({ value, onChange, onSelect, op
             zIndex: 100,
           }}
         >
+          {isLoading && (
+            <li style={{ padding: "8px", color: "#555" }}>Loading...</li>
+          )}
+
+          {isSuccess && options.length === 0 && !isLoading && (
+            <li style={{ padding: "8px", color: "#555" }}>No results found</li>
+          )}
+
           {options.map((city, index) => (
             <li
               key={city.id}

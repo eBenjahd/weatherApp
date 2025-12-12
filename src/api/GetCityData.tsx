@@ -1,5 +1,5 @@
 import { AxiosClient } from "../clients/axiosClient" 
-import type { CityResult } from "../types/citySearch.interface";
+import type CityResult from "../types/citySearch.interface";
 
 async function GetCityData(name: string) : Promise<{results : CityResult[]}> {
 
