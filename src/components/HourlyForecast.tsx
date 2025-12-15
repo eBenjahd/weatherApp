@@ -35,6 +35,11 @@ function HourlyForecast({ hourlyByDay }: HourlyForecastProps) {
       setSelectedDay(selected);
       setOpen(false);
     }
+
+    if (e.key === "Escape") {
+      e.preventDefault()
+      setOpen(false)
+    }
   };
 
   return (
