@@ -1,5 +1,10 @@
 @use './styles/variables' as *;
+@use './styles/mixins' as *;
 
 body { 
     background-color: $background-color;
+    max-width: 1216px;
+    @include breakpoint(desktop){
+        margin: 25px auto;
+    }
 }

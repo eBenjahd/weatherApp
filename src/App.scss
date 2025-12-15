@@ -126,6 +126,41 @@ nav {
 }
 
 main {
+    display: grid;
+    @include breakpoint(desktop) {
+            grid-template-columns: 2fr 0.7fr;
+            gap: 24px;
+            box-sizing: border-box;
+
+
+            h1 {
+                grid-area: 1 / 1 / 1 / span 2;
+                text-align: center;
+            }
+
+            form {
+                grid-area: 2 / 1 / 2 / span 2;
+                width: 656px;
+                justify-self: center;
+            }
+
+            .hero {
+                grid-area: 3 / 1 / 3 / 1;
+            }
+            .detail-card {
+                grid-area: 4 / 1 / 4 / 1;
+            }
+
+            .daily-forecast {
+                grid-area: 5 / 1 / 5 / 1;
+            }
+
+            aside {
+                grid-area: 3 / 2 / 6 / 2;
+            }
+    }
+
+
     h1 {
         margin: 48px 0;
         font-size: map.get(vars.$text-preset-2, font-size);
@@ -140,11 +175,23 @@ main {
             text-wrap: wrap;
             justify-self: center;
         }
+        @include breakpoint(desktop){
+            max-width: 731px;
+            text-wrap: wrap;
+            justify-self: center;
+        }
     }
     form{
         margin-bottom: 32px;
 
         @include breakpoint(tablet) {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        @include breakpoint(desktop) {
             display: grid;
             grid-template-columns: 1fr auto;
             justify-content: center;
@@ -198,6 +245,10 @@ main {
                 margin: 0;
             }
 
+            @include breakpoint(desktop){
+                margin: 0;
+            }
+
             &:focus,
             &:focus-visible {
                 box-shadow: 0 0 0 2px vars.$white;
@@ -218,6 +269,10 @@ main {
             color: vars.$neutral200;
 
             @include breakpoint(tablet) {
+                top: 52%;
+            }
+
+            @include breakpoint(desktop) {
                 top: 52%;
             }
         }
@@ -270,6 +325,13 @@ main {
                 background-image: url('./assets/svg/Desktop-Hero.svg');
                 padding: 80px 24px ;
             }
+
+            @include breakpoint(desktop){
+                grid-template-columns: 1fr 1fr 1fr 1fr;  
+                background-image: url('./assets/svg/Desktop-Hero.svg');
+                padding: 80px 24px ;
+                margin-bottom: 0;
+            }            
             
             p {
                 margin: 0;
@@ -289,6 +351,12 @@ main {
                 gap: 12px;
 
                 @include breakpoint(tablet) {   
+                    grid-area: 1 / 1 / 1 /span 2;
+                    justify-self: left;
+                    text-align: left;
+                }
+
+                @include breakpoint(desktop) {   
                     grid-area: 1 / 1 / 1 /span 2;
                     justify-self: left;
                     text-align: left;
@@ -331,6 +399,12 @@ main {
                 grid-template-rows: 1fr;
             }
 
+            @include breakpoint(desktop){   
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: auto;
+                margin-bottom: 0;
+            }
+
             p {
                 margin: 0;
             }
@@ -366,6 +440,11 @@ main {
         }
 
         &.daily-forecast{
+
+            @include breakpoint(desktop){
+                margin-bottom: 0;
+                align-self: flex-end;
+            }
 
             color: vars.$white;
             
@@ -413,6 +492,12 @@ main {
                             letter-spacing: map.get(vars.$text-preset-7, letter-spacing);
                         }
                     }
+
+                    img {
+                        @include breakpoint(desktop){
+                            height: 60px;
+                        }
+                    }
                 }
             }
             
@@ -428,6 +513,7 @@ main {
         padding: 16px 10px;
         border-radius: vars.$radius-12;
         border: 1px solid vars.$neutral600;
+        height: 645px;
 
         h2 {
             margin: 0;
@@ -495,13 +581,12 @@ main {
         .scroll {
             grid-column: span 2;
             overflow: scroll;
-            max-height: 695px;
             scroll-behavior: smooth;
             display: flex;
             flex-direction: column;
             gap: 16px;
             margin-top: 16px;
-            
+            height: 100%;
 
             div {
                 width: 100%;
@@ -530,6 +615,12 @@ main {
                     font-size: map.get(vars.$text-preset-7, font-size);
                     line-height: map.get(vars.$text-preset-7, line-height);
                     letter-spacing: map.get(vars.$text-preset-7, letter-spacing);
+                }
+
+                img {
+                    @include breakpoint(desktop){
+                        height: 60px;
+                    }
                 }
             }
 
