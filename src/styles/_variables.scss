@@ -1,0 +1,71 @@
+// colors 
+$neutral900: #02012C;
+$neutral800: #262540;
+$neutral700: #302F4A;
+$neutral600: #3C3B5E;
+$neutral300: #ACACB7;
+$neutral200: #D4D3D9;
+$white: #FFFFFF;
+$orange: #FF820A;
+$blue500: #4658D9;
+$blue700: #2B1B9C;
+
+// typography 
+$text-preset-1: (
+    font-size: 96px,
+    line-height: 100%,
+    letter-spacing: -2px
+);
+$text-preset-2: (
+    font-size: 52px,
+    line-height: 120%,
+    letter-spacing: 0
+);
+$text-preset-3: (
+    font-size: 32px,
+    line-height: 120%,
+    letter-spacing: 0
+);
+$text-preset-4: (
+    font-size: 28px,
+    line-height: 120%,
+    letter-spacing: 0
+);
+$text-preset-5: (
+    font-size: 20px,
+    line-height: 120%,
+    letter-spacing: 0
+);
+$text-preset-6: (
+    font-size: 18px,
+    line-height: 120%,
+    letter-spacing: 0
+);
+$text-preset-7: (
+    font-size: 16px,
+    line-height: 120%,
+    letter-spacing: 0
+);
+$text-preset-8: (
+    font-size: 14px,
+    line-height: 120%,
+    letter-spacing: 0
+);
+
+// Radius
+
+$radius-4: 4px; 
+$radius-6: 6px; 
+$radius-8: 8px; 
+$radius-10: 10px; 
+$radius-12: 12px; 
+$radius-14: 14px; 
+$radius-16: 16px; 
+$radius-20: 20px; 
+$radius-24: 24px; 
+$radius-999: 999px; 
+
+
+// Variables
+
+$background-color: $neutral900;

@@ -12,7 +12,7 @@ const InputSearch: React.FC<InputSearchProps> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const listRef = useRef<HTMLUListElement>(null);
-  const shouldShowList = value.length > 2;
+  const shouldShowList = value.length > 2 && (isLoading || isSuccess);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -58,8 +58,9 @@ const InputSearch: React.FC<InputSearchProps> = ({
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div>
       <input
+        id="1"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
@@ -67,28 +68,18 @@ const InputSearch: React.FC<InputSearchProps> = ({
         style={{ width: "100%" }}
       />
 
+      <div className="svg"></div>
+
       {shouldShowList && (
         <ul
           ref={listRef}
-          style={{
-            position: "absolute",
-            width: "100%",
-            background: "white",
-            border: "1px solid #ccc",
-            margin: 0,
-            padding: 0,
-            listStyle: "none",
-            maxHeight: "200px",
-            overflowY: "auto",
-            zIndex: 100,
-          }}
         >
           {isLoading && (
-            <li style={{ padding: "8px", color: "#555" }}>Loading...</li>
+            <li>Loading...</li>
           )}
 
           {isSuccess && options.length === 0 && !isLoading && (
-            <li style={{ padding: "8px", color: "#555" }}>No results found</li>
+            <li>No results found</li>
           )}
 
           {options.map((city, index) => (
@@ -96,9 +87,8 @@ const InputSearch: React.FC<InputSearchProps> = ({
               key={city.id}
               onClick={() => onSelect(city)}
               style={{
-                padding: "8px",
-                background: index === activeIndex ? "#ddd" : "transparent",
-                cursor: "pointer",
+                background: index === activeIndex ? "#302F4A" : "transparent",
+                border:`1px solid ${index === activeIndex ? "#3C3B5E" : "transparent"}`
               }}
             >
               {city.name} - {city.country}

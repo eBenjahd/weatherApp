@@ -3,6 +3,7 @@ import WeatherProvider from "./context/WeatherContext"
 import MetricProvider from "./context/MetricsContext"
 import CitySearch from "./components/CitySearch"
 import Nav from "./components/Nav"
+import './App.scss';
 
 function App() {
 

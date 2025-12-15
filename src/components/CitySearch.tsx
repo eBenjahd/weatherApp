@@ -40,7 +40,8 @@ export default function CitySearch() {
   };
 
   return (
-    <>
+    <main>
+      <h1>How's the sky looking today?</h1>
       <form onSubmit={handleSubmit}>
         <InputSearch
           value={query}
@@ -76,9 +77,9 @@ export default function CitySearch() {
 
         <DailyForecastCard daily={weatherData.daily}/>
 
-        <HourlyForecast weatherDate={weatherData.current.date} hourlyByDay={weatherData.hourlyByDay}/>
+        <HourlyForecast hourlyByDay={weatherData.hourlyByDay}/>
       </>
       )}
-    </>
+    </main>
   );
 }
