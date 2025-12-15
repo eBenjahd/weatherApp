@@ -1,73 +1,56 @@
-# React + TypeScript + Vite
+# Weather Forecast App (Frontend Demo)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **frontend-only demonstration** application built to showcase UI development, state management, and API integration best practices.  
+It is **not intended to be a production-ready application**, but rather a technical demo focused on frontend architecture and implementation.
 
-Currently, two official plugins are available:
+## Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The main goal of this project is to demonstrate:
 
-## React Compiler
+- Component-driven UI development
+- Data fetching and caching
+- Clean styling architecture
+- Type-safe React code
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+There is **no backend owned by this project**. All data is fetched from an external public API.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React + TypeScript (TSX)** – Component-based UI with strong typing
+- **React Query (@tanstack/react-query)** – Server-state management, caching, and async handling
+- **Axios** – HTTP client for API requests
+- **SCSS** – Modular and scalable styling
+- **Vite** – Fast development environment
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Hourly and daily weather forecast UI
+- Custom dropdown and keyboard navigation
+- Fully responsive layout
+- Accessible focus states and keyboard interactions
+- Clean separation of logic, UI, and utilities
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Project Scope
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This application focuses **only on the frontend layer**:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- No authentication
+- No database
+- No server-side logic
+- No persistent state
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+It is intended to demonstrate **frontend skills and architectural decisions**, not full-stack functionality.
+
+## Disclaimer
+
+This project is a **demo project for learning and portfolio purposes**.  
+API data, edge cases, and error handling are simplified.
+
+## License
+
+This project is open for educational and demonstration purposes.
+
+
+## 🌐 Deployment
+
+The application is deployed using **Vercel**, providing fast global delivery and an optimized frontend hosting environment.
